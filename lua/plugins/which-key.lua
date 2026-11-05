@@ -25,6 +25,10 @@ return {
         { "<leader>H", desc = "htop terminal" },
         { "<leader>T", desc = "git status" },
         { "<leader>F", desc = "fzf opts" },
+        { "<leader>a", desc = "agent panel" },
+        { "<leader>aa", desc = "focus agent" },
+        { "<leader>an", desc = "new agent session" },
+        { "<leader>as", desc = "switch agent" },
       })
     end,
   },

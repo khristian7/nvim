@@ -27,6 +27,7 @@ require("config.theme")
 require("config.mappings")
 require("config.options")
 require("config.autocmd")
+require("config.agent")
 
 -- plugin specs live in lua/plugins/*.lua, each returns a spec table
 require("lazy").setup("plugins", {

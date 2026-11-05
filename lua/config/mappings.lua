@@ -9,15 +9,20 @@ map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- buffers
+-- buffers (cycle only through listed = code buffers; the agent
+-- terminal is unlisted, so it's skipped here and in barbar)
 map("n", "<S-l>", ":bnext<CR>")
 map("n", "<S-h>", ":bprevious<CR>")
+-- window navigation that never lands in the agent panel by accident
+map("n", "<M-l>", "<C-w>l") -- <A-l> right (agent lives there; <leader>aa enters it)
+map("n", "<M-h>", "<C-w>h") -- <A-h> left
 map("n", "<leader>q", ":BufferClose<CR>")
 map("n", "<leader>Q", ":BufferClose!<CR>")
 map("n", "<leader>U", "::bufdo bd<CR>") --close all
 map('n', '<leader>vs', ':vsplit<CR>:bnext<CR>') --ver split + open next buffer
 
--- buffer position nav + reorder
+-- buffer position nav + reorder (barbar only lists code buffers;
+-- the unlisted agent terminal never appears here)
 map('n', '<AS-h>', '<Cmd>BufferMovePrevious<CR>')
 map('n', '<AS-l>', '<Cmd>BufferMoveNext<CR>')
 map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>')
@@ -59,6 +64,10 @@ map("n", "<leader>p", switch_theme) --cycle themes
 map("n", "<leader>P", ":Lazy<CR>") --plugin manager
 map('n', '<leader>z', ":lua require('FTerm').open()<CR>") --open term
 map('t', '<Esc>', '<C-\\><C-n><CMD>lua require("FTerm").close()<CR>') --preserves session
+-- agent panel (VS Code style side window)
+
+
+
 map("n", "<leader>w", ":w<CR>") --write but one less key
 map("n", "<leader>d", ":w ") --duplicate to new name
 map("n", "<leader>x", "<cmd>!chmod +x %<CR>") --make a file executable

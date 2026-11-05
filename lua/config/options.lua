@@ -30,6 +30,9 @@ local options = {
 	
 	termguicolors = true,
 
+	autoread = true, -- auto-reload file when agent edits it on disk
+	autowrite = false,
+
 	ignorecase = true, --ignore case while searching
 	smartcase = true, --but do not ignore if caps are used
 

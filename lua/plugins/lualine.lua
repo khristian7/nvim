@@ -37,6 +37,18 @@ return {
         icon = "",
       }
 
+      local agent = {
+        function()
+          local ok, a = pcall(require, "config.agent")
+          if ok then return a.status() end
+          return ""
+        end,
+        cond = function()
+          local ok, a = pcall(require, "config.agent")
+          return ok and a.is_open()
+        end,
+      }
+
       local progress = function()
         local current_line = vim.fn.line(".")
         local total_lines = vim.fn.line("$")
@@ -60,7 +72,7 @@ return {
           lualine_a = { branch },
           lualine_b = { mode },
           lualine_c = { diagnostics },
-          lualine_x = { diff, "fileformat", "filetype" },
+          lualine_x = { agent, diff, "fileformat", "filetype" },
           lualine_y = { "location" },
           lualine_z = { progress },
         },

@@ -58,11 +58,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 
--- reload files on external change
---vim.api.nvim_create_autocmd("FocusGained", {
---	pattern = "*",
---	command = "checktime",
---})
+-- reload files on external change (agent edits on disk -> visible in code pane)
+vim.api.nvim_create_autocmd({ "FocusGained", "CursorHold", "CursorHoldI" }, {
+	pattern = "*",
+	command = "checktime",
+})
 
 
 -- restore cursor pos on file open

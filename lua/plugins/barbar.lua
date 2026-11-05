@@ -18,6 +18,11 @@ return {
         -- Hide inactive buffers and file extensions. Other options are `alternate`, `current`, and `visible`.
         hide = { extensions = false, inactive = false },
 
+
+        -- Never show terminal/agent buffers in the tabline; the
+        -- agent panel has its own side window + <leader>a keymap.
+        exclude_ft = { "term", "agent" },
+
         icons = {
           buffer_index = false,
           buffer_number = false,
@@ -51,6 +56,9 @@ return {
         sidebar_filetypes = {   -- Set the filetypes which barbar will offset itself for
           -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
           NvimTree = true,
+          -- The agent panel is a fixed side window on the right;
+          -- don't offset the tabline for it (it's not a sidebar
+          -- buffer the user opens/closes like NvimTree).
           -- Or, specify the text used for the offset:
           undotree = {
             text = 'undotree',
